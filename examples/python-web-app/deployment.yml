@@ -19,9 +19,16 @@ spec:
         image: arzunn/python-demo-app:v1
         ports:
         - containerPort: 8000
-        env:
-          - name: DB-PORT
-            valueFrom:
-              configMapKeyRef:
-                name: test-cm
-                key: DB-PORT
+        volumeMounts:
+          - name: db-connection
+            mountPath: /opt
+          - name: db-secret
+            mountPath: /opt/secret
+            readOnly: true
+      volumes: 
+      - name: db-connection
+        configMap:
+          name: test-cm
+      - name: db-secret
+        secret:
+          secretName: test-secret
