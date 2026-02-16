@@ -19,4 +19,9 @@ spec:
         image: arzunn/python-demo-app:v1
         ports:
         - containerPort: 8000
-
+        env:
+          - name: DB-PORT
+            valueFrom:
+              configMapKeyRef:
+                name: test-cm
+                key: DB-PORT

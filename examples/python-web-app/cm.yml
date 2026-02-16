@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  - name: test-cm
+  name: test-cm
 data:
   DB-PORT: "3306"
 
